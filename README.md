@@ -30,3 +30,6 @@ https://docs.google.com/spreadsheets/d/1MS0yKB443czmEn3nTWtePc7vnJ7Vo4mWapkCSIo-
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用素材
+ゲーム画面のキャプチャやイラストなどは基本的に使用せず、検索機能のためにゲームタイトルの略称のみを使用
