@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = User.where(genre_id: current_user.genre_id)
+    users = User.where(genre_id: current_user.genre_id)
+  
+    @user = users[0]
 
   end
 
