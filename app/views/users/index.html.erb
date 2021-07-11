@@ -1,13 +1,11 @@
+
 <div id="tinderslide">
     <ul>
-      <% @users.each do |user| %>
-        <li class="pane">
-          <div class="img"><%= attachment_image_tag user, :image,  format: 'image', size: "300x300" %></div>
-          <div><%= user.name %></div>
-          <div class="like"></div>
-          <div class="dislike"></div>
-        </li>
-      <% end %>
+        <li class="pane1"><div class="img"></div><div>Miami Beach</div><div class="like"></div><div class="dislike"></div></li>
+        <li class="pane2"><div class="img"></div><div>San Francisco</div><div class="like"></div><div class="dislike"></div></li>
+        <li class="pane3"><div class="img"></div><div>Chicago</div><div class="like"></div><div class="dislike"></div></li>
+        <li class="pane4"><div class="img"></div><div>New York</div><div class="like"></div><div class="dislike"></div></li>
+        <li class="pane5"><div class="img"></div><div>Beach</div><div class="like"></div><div class="dislike"></div></li>
     </ul>
 </div>
 <% @users.each do |user| %>
