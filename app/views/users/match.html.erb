@@ -1,4 +1,4 @@
-<% @users.each do |user| %>
+<% @user.following_user&&@user.follower_user.where.not(id: current_user.id).each do |user| %>
 <%= attachment_image_tag user, :image,  format: 'image', size: "300x300" %>
 <table>
   <tbody>
@@ -17,9 +17,6 @@
     <tr>
       <td>自己紹介</td>
       <td><%= user.introduction %></td>
-    </tr>
-    <tr>
-      <td><%= link_to '♥', follow_path(user.id), method: :POST %></td>
     </tr>
   </tbody>
 </table>

@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="css/jTinder.css">
   </head>
 
   <body>
@@ -15,6 +16,9 @@
     <% if user_signed_in? %>
       <li>
         <%= link_to "プロフィール", user_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to "マッチしたユーザー", user_match_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -29,6 +33,6 @@
     <% end %>
     </header>
     <%= yield %>
-    <footer></footer>
+
   </body>
 </html>
