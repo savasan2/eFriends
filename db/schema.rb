@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_192056) do
+ActiveRecord::Schema.define(version: 2021_07_09_194308) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 2021_07_09_192056) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
-    t.integer "Genre_id"
     t.text "introduction"
     t.boolean "admin", default: false
     t.integer "gender", default: 0
+    t.integer "genre_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

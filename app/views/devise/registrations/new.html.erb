@@ -3,10 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name, "ニックネーム" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+  
 
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
@@ -24,16 +21,6 @@
   <div class="field">
     <%= f.label :password_confirmation, "パスワード再入力" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "現在プレイ中のゲーム" %><br />
-    <%= f.collection_select(:Genre_id, Genre.all, :id, :name, {prompt: "選択してください"}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label "プロフィール画像" %><br />
-    <%= f.attachment_field :image %>
   </div>
 
   <div class="actions">

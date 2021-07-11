@@ -1,0 +1,23 @@
+<% @users.each do |user| %>
+<%= attachment_image_tag user, :image,  format: 'image', size: "300x300" %>
+<table>
+  <tbody>
+    <tr>
+      <td>ニックネーム</td>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td>性別</td>
+      <td><%= user.gender %></td>
+    </tr>
+    <tr>
+      <td>プレイしているゲーム</td>
+      <td><%= user.genre.name %></td>
+    </tr>
+    <tr>
+      <td>自己紹介</td>
+      <td><%= user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

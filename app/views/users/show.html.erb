@@ -1,0 +1,22 @@
+<%= attachment_image_tag current_user, :image,  format: 'image', size: "300x300" %>
+<table>
+  <tbody>
+    <tr>
+      <td>ニックネーム</td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td>性別</td>
+      <td><%= current_user.gender %></td>
+    </tr>
+    <tr>
+      <td>プレイしているゲーム</td>
+      <td><%= current_user.genre.name %></td>
+    </tr>
+    <tr>
+      <td>自己紹介</td>
+      <td><%= current_user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "編集する", edit_user_path(current_user.id) %>

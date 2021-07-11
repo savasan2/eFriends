@@ -1,5 +1,5 @@
 <h2>ゲームジャンル管理</h2>
-<%= form_with model:@genre, url:"/admin/genres", local:true do |f| %>
+<%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
   <%= f.text_field :name %>
   <%= f.submit "追加する" %>
 <% end %>
