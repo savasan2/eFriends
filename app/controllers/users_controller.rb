@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     current_user.save
 
     @user = users[current_user.now]
+    if @user.nil?
+    redirect_to root_path
+    end
   end
 
   def register
@@ -14,9 +17,9 @@ class UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to  user_path(current_user.id)
+      redirect_to  users_path
     else
-      redirect_to user_register_path
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
   def match
     @user = current_user
   end
+
   private
 
   def user_params

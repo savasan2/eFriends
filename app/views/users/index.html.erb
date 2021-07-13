@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td><%= link_to '♥', follow_path(@user.id), method: :POST %></td>
-      <td></td>
+      <td><%= link_to '×', skip_path(@user.id) %></td>
     </tr>
   </tbody>
 </table>

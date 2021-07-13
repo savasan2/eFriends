@@ -18,6 +18,9 @@
       <td>自己紹介</td>
       <td><%= user.introduction %></td>
     </tr>
+    <tr>
+      <td><%= link_to "チャットルーム", chat_path(user.id)%></td>
+    </tr>
   </tbody>
 </table>
 <% end %>
