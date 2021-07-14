@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(id: current_user.following_user).order("updated_at DESC")
     current_user.now = 0
     current_user.save
-
     @user = users[current_user.now]
     if @user.nil?
     redirect_to root_path
@@ -28,13 +27,18 @@ class UsersController < ApplicationController
   end
 
   def match
-    @user = current_user
+  end
+
+  def destroy
+    user = User.find(current_user.id)
+    user.destroy
+    redirect_to root_path
   end
 
   private
 
   def user_params
-     params.require(:user).permit(:genre_id,:name,:image,:gender,:introduction)
+    params.require(:user).permit(:genre_id,:name,:image,:gender,:introduction)
   end
 
 end

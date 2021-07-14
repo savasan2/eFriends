@@ -1,6 +1,19 @@
 class RelationshipsController < ApplicationController
   def follow
-    current_user.follow(params[:id])
+    user = User.find(params[:id])
+    current_user.follow(user.id)
+    if user.following?(current_user) #フォローされていたら通知を作成する
+      notification = current_user.active_notifications.new(
+        visited_id: user.id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+      notification = user.active_notifications.new(
+        visited_id: current_user.id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
     users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(id: current_user.following_user).order("updated_at DESC")
     @user = users[current_user.now] #フォローしたら配列が1つ減るため自動的に1つ繰り上がる
     if @user.nil?
@@ -10,13 +23,7 @@ class RelationshipsController < ApplicationController
     end
   end
 
-  def unfollow
-    current_user.unfollow(params[:id])
-    redirect_to root_path
-  end
-
   def skip
-    current_user.follow(params[:id])
     users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(id: current_user.following_user).order("updated_at DESC")
     current_user.now = current_user.now + 1 #配列の次のユーザー
     current_user.save

@@ -20,6 +20,9 @@
         <%= link_to "マッチしたユーザー", user_match_path %>
       </li>
       <li>
+        <%= link_to "通知", notifications_path %>
+      </li>
+      <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
