@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  def match
+  def matched
+    @users = current_user.following_user & current_user.follower_user
   end
 
   def destroy

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'users/register' => 'users#register', as: 'user_register'
-  get 'users/match' => 'users#match', as: 'user_match'
+  get 'users/matched' => 'users#matched', as: 'user_matched'
   get 'chat/:id' => 'chats#show', as: 'chat'
+  post 'chat/create/:id' => 'chats#create', as: 'chat_create'
   resources :notifications, only: [:index]
-  resources :chats, only: [:create]
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

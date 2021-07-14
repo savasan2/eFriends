@@ -9,9 +9,7 @@
       <% when 'follow' then %>
         <%= "とマッチしました" %>
       <% else %>
-        <p class="text-muted.mb-0">
-          <%= Chat.find_by(id: notification.chat_id)&.chat %>
-        </p>
+      <%= "からメッセージが届きました。" %>
       <% end %>
   </div>
   <div class="small.text-muted.text-right">

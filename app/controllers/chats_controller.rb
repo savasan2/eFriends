@@ -14,17 +14,22 @@ class ChatsController < ApplicationController
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
   end
-  
+
   def create
-    @chat = current_user.chats.new(chat_params)
-    @chat.save
-    redirect_to request.referer
+    chat = current_user.chats.new(chat_params)
+    chat.save
+    notification = current_user.active_notifications.new(chat_id: chat.id, visited_id: params[:id], action: "chat")
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+    redirect_back(fallback_location: root_path)
   end
 
   private
-  
+
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-  
+
 end
