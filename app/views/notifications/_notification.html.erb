@@ -1,9 +1,7 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
 <div class = "col-md-6.mx-auto">
   <div class="form-inline">
     <span>
-      <%= visitor.name %>さん
+      <%= notification.visitor.name %>さん
     </span>
       <% case notification.action %>
       <% when 'follow' then %>

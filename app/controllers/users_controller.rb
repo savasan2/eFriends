@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(id: current_user.following_user).order("updated_at DESC")
+    users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id,admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
     current_user.now = 0
     current_user.save
     @user = users[current_user.now]

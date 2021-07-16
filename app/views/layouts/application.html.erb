@@ -13,17 +13,27 @@
     <header>
     <h1>eFriends</h1>
     <% if user_signed_in? %>
-      <li>
-        <%= link_to "プロフィール", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "マッチしたユーザー", user_matched_path %>
-      </li>
-      <li>
-        <%= link_to "通知", notifications_path %>
-      </li>
-      <% if current_user.admin == "true" %>
+      <% if current_user.admin %>
+        <li>
+          <%= link_to "ユーザー一覧", admin_users_path %>
+        </li>
+        <li>
+          <%= link_to "ジャンル管理", admin_genres_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "マイページ", user_path(current_user.id) %>
+        </li>
+        <li>
+          <%= link_to "フレンド", user_matched_path %>
+        </li>
+        <li>
+          <%= link_to "お知らせ", notifications_path %>
+        </li>
       <% end %>
+      <li>
+        <%= link_to "お問い合わせ", new_contact_path %>
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>

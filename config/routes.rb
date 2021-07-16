@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-  get 'users/register' => 'users#register', as: 'user_register'
-  get 'users/matched' => 'users#matched', as: 'user_matched'
+  root to: 'homes#top'
   get 'chat/:id' => 'chats#show', as: 'chat'
   post 'chat/create/:id' => 'chats#create', as: 'chat_create'
   resources :notifications, only: [:index]
-  devise_for :users, controllers: {
-    registrations: 'users/registrations'
-  }
-  root to: 'homes#top'
+
+  get 'users/register' => 'users#register', as: 'user_register'
+  get 'users/matched' => 'users#matched', as: 'user_matched'
+  devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users, only: [:index, :show, :edit, :update, :destroy]
+
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
+
   namespace :admin do
+    resources :users, only: [:index, :destroy]
     resources :genres, only: [:index, :create, :destroy]
   end
 

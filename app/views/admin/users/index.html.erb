@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <td>名前</td>
+      <td>性別</td>
+      <td>ゲーム</td>
+      <td>自己紹介</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.gender %></td>
+      <td><%= user.genre.name %></td>
+      <td><%= user.introduction %></td>
+      <td><%= link_to "削除", admin_user_path(:id), method: :destroy %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
