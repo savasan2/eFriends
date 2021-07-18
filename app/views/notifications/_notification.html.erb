@@ -1,16 +1,14 @@
-<div class = "col-md-6.mx-auto">
-  <div class="form-inline">
+<div>
+  <div align="center">
     <span>
       <%= notification.visitor.name %>さん
     </span>
       <% case notification.action %>
       <% when 'follow' then %>
-        <%= "とマッチしました" %>
+        <%= "とマッチングしました" %>
       <% else %>
       <%= "からメッセージが届きました。" %>
       <% end %>
-  </div>
-  <div class="small.text-muted.text-right">
-   <%= time_ago_in_words(notification.created_at).upcase %>
+      <%= time_ago_in_words(notification.created_at).upcase %>前
   </div>
 </div>

@@ -1,10 +1,11 @@
-<table>
+<div>
+<table align="center">
   <thead>
     <tr>
       <td>名前</td>
       <td>性別</td>
       <td>ゲーム</td>
-      <td>自己紹介</td>
+      <td>登録日</td>
       <td></td>
     </tr>
   </thead>
@@ -14,9 +15,11 @@
       <td><%= user.name %></td>
       <td><%= user.gender %></td>
       <td><%= user.genre.name %></td>
-      <td><%= user.introduction %></td>
-      <td><%= link_to "削除", admin_user_path(:id), method: :destroy %></td>
+      <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= link_to "削除", admin_user_path(user.id), method: :delete, data: { confirm: "ユーザー情報は削除されます。本当に削除しますか？" }, class: "btn btn-secondary fw-bold border-white bg-white" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<div><%= paginate @users %></div>
+</div>

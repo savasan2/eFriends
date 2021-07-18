@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def index
-    users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id,admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
     current_user.now = 0
     current_user.save
     @user = users[current_user.now]
     if @user.nil?
-    redirect_to root_path
+    redirect_to no_user_path
     end
   end
 
@@ -28,6 +28,10 @@ class UsersController < ApplicationController
 
   def matched
     @users = current_user.following_user & current_user.follower_user
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(8)
+  end
+
+  def no_user
   end
 
   def destroy

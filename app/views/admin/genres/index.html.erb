@@ -1,9 +1,10 @@
+<div>
 <h2>ゲームジャンル管理</h2>
 <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
   <%= f.text_field :name %>
   <%= f.submit "追加する" %>
 <% end %>
-<table>
+<table align="center">
   <thead>
     <td>ジャンル名</td>
     <td></td>
@@ -12,8 +13,10 @@
     <% @genres.each do |genre| %>
     <tr>
       <td><%= genre.name %></td>
-      <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete %></td>
+      <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete, class: "btn btn-sm btn-secondary fw-bold border-white bg-white" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<div><%= paginate @genres %></div>
+</div>

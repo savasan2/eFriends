@@ -1,8 +1,9 @@
-<%= attachment_image_tag @user, :image,  format: 'image', size: "300x300" %>
-<table>
+<div>
+<%= attachment_image_tag @user, :image,  format: 'image', size: "400x400", fallback: "no_image.png", class: "img" %>
+<table align="center">
   <tbody>
     <tr>
-      <td>ニックネーム</td>
+      <td style="width: 50%">ニックネーム</td>
       <td><%= @user.name %></td>
     </tr>
     <tr>
@@ -17,9 +18,14 @@
       <td>自己紹介</td>
       <td><%= @user.introduction %></td>
     </tr>
-    <tr>
-      <td><%= link_to '♥', follow_path(@user.id), method: :POST %></td>
-      <td><%= link_to '×', skip_path(@user.id) %></td>
-    </tr>
   </tbody>
 </table>
+<div>
+  <%= link_to follow_path(@user.id), method: :POST, class: "btn btn-lg btn-outline-danger fw-bold  bg-transparent mt-3" do %>
+    <i class="fas fa-heart" style="color: red"></i>
+  <% end %>
+  　　　　<%= link_to skip_path(@user.id), class: "btn btn-lg btn-outline-light fw-bold border-white bg-transparent mt-3" do %>
+    <i class="fas fa-forward"></i>
+  <% end %>
+</div>
+</div>

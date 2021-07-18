@@ -1,7 +1,8 @@
+<h2><%= User.find(params[:id]).name %></h2>
 <%= form_with model: @chat, url: chat_create_path, local: true do |f| %>
     <%= f.text_field :message %>
     <%= f.hidden_field :room_id %>
-    <%= f.submit %>
+    <%= f.submit "送信する" %>
 <% end %>
 <table>
     <thead>
@@ -15,6 +16,7 @@
             <tr>
                 <td><%= chat.user.name %></td>
                 <td><%= chat.message %></td>
+                <td> <%= time_ago_in_words(chat.created_at).upcase %>前</td>
             </tr>
         <% end %>
     </tbody>

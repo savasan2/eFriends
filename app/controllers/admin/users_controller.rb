@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.where.not(admin: true)
+    @users = User.page(params[:page]).per(10).where.not(admin: true)
   end
 
   def destroy

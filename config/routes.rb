@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   get 'users/register' => 'users#register', as: 'user_register'
   get 'users/matched' => 'users#matched', as: 'user_matched'
+  get 'users/show' => 'users#show', as: 'user'
+  get 'users/no_user' => 'users#no_user', as: 'no_user'
   devise_for :users, controllers: {registrations: 'users/registrations'}
-  resources :users, only: [:index, :show, :edit, :update, :destroy]
+  resources :users, only: [:index, :edit, :update, :destroy]
 
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
