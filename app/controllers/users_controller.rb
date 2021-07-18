@@ -4,9 +4,6 @@ class UsersController < ApplicationController
     current_user.now = 0
     current_user.save
     @user = users[current_user.now]
-    if @user.nil?
-    redirect_to no_user_path
-    end
   end
 
   def register
@@ -29,9 +26,6 @@ class UsersController < ApplicationController
   def matched
     @users = current_user.following_user & current_user.follower_user
     @users = Kaminari.paginate_array(@users).page(params[:page]).per(8)
-  end
-
-  def no_user
   end
 
   def destroy
