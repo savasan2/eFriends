@@ -22,8 +22,12 @@ class ChatsController < ApplicationController
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
-    notification.save if notification.valid?
-    redirect_back(fallback_location: root_path)
+    notification.save
+    @user = User.find(params[:id])
+    rooms = current_user.user_rooms.pluck(:room_id)
+    user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+    @room = user_rooms.room
+    @chats = @room.chats.order(id: "DESC")
   end
 
   private

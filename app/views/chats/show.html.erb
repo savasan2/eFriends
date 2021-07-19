@@ -1,5 +1,5 @@
 <h2><%= User.find(params[:id]).name %></h2>
-<%= form_with model: @chat, url: chat_create_path, local: true do |f| %>
+<%= form_with model: @chat, url: chat_create_path, remote: true do |f| %>
     <%= f.text_field :message %>
     <%= f.hidden_field :room_id %>
     <%= f.submit "送信する" %>
@@ -11,13 +11,8 @@
             <td>投稿内容</td>
         </tr>
     </thead>
-    <tbody>
-        <% @chats.each do |chat| %>
-            <tr>
-                <td><%= chat.user.name %></td>
-                <td><%= chat.message %></td>
-                <td> <%= time_ago_in_words(chat.created_at).upcase %>前</td>
-            </tr>
-        <% end %>
+    <tbody class="chat">
+        <%= render 'chat', chats: @chats %>
     </tbody>
+
 </table>
