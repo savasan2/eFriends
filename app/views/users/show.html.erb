@@ -1,0 +1,24 @@
+<div>
+<%= attachment_image_tag current_user, :image,  format: 'image', size: "400x400", fallback: "no_image.png", class: "img" %>
+<table align="center">
+  <tbody>
+    <tr>
+      <td style="width: 50%">ニックネーム</td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td>性別</td>
+      <td><%= current_user.gender %></td>
+    </tr>
+    <tr>
+      <td>プレイしているゲーム</td>
+      <td><%= current_user.genre.name %></td>
+    </tr>
+    <tr>
+      <td>自己紹介</td>
+      <td><%= current_user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-lg btn-secondary fw-bold border-white bg-white mt-3" %>
+</div>
