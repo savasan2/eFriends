@@ -32,11 +32,8 @@
         }
       }
     </style>
-
-
   </head>
 
-  </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
@@ -53,6 +50,9 @@
                 <%= link_to "ジャンル管理", admin_genres_path, class: "nav-link" %>
               <% else %>
                 <%= link_to "マイページ", user_path, class: "nav-link" %>
+                  <% if unchecked_notifications.any? %>
+                    <i class="fa fa-circle circle"></i>
+                  <% end %>
                 <%= link_to "お知らせ", notifications_path, class: "nav-link" %>
                 <%= link_to "フレンド", user_matched_path, class: "nav-link" %>
                 <%= link_to "お問い合わせ", new_contact_path, class: "nav-link" %>
@@ -64,9 +64,7 @@
             <% end %>
           </nav>
         </div>
-      <main class="px-3">
       </header>
-      </main>
       <%= yield %>
       <footer class="mt-auto text-white-50">
         <p>Copyright © eFriends Inc. All Rights Reserved.</p>
