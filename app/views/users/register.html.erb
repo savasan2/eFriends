@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "現在プレイ中のゲーム" %><br />
+    <%= f.label "プレイ中のゲーム" %><br />
     <%= f.collection_select(:genre_id, Genre.all, :id, :name ) %>
   </div>
 
@@ -28,6 +28,6 @@
     <%= f.text_area :introduction %>
   </div>
 
-  <div><%= f.submit "登録" %></div>
+  <div><%= f.submit "登録", class: "btn btn-lg btn-secondary fw-bold border-white bg-white" %></div>
 
 <% end %>

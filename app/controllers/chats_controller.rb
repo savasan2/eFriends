@@ -28,6 +28,7 @@ class ChatsController < ApplicationController
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
     @room = user_rooms.room
     @chats = @room.chats.order(id: "DESC")
+    @chat = Chat.new(room_id: @room.id)
   end
 
   private

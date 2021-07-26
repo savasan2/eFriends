@@ -1,4 +1,14 @@
 ja:
+  ja:
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+      contact:
+        title: "件名"
+        message: "内容"
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

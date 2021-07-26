@@ -11,12 +11,12 @@
       <td><%= current_user.gender %></td>
     </tr>
     <tr>
-      <td>プレイしているゲーム</td>
+      <td>登録されているゲーム</td>
       <td><%= current_user.genre.name %></td>
     </tr>
     <tr>
       <td>自己紹介</td>
-      <td><%= current_user.introduction %></td>
+      <td><%= simple_format(h(current_user.introduction)) %></td>
     </tr>
   </tbody>
 </table>
