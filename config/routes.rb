@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'users/register' => 'users#register', as: 'user_register'
   get 'users/matched' => 'users#matched', as: 'user_matched'
   get 'users/show' => 'users#show', as: 'user'
+  get 'users/search' => 'users#search', as: 'search'
+  post 'users/result' => 'users#result', as: 'result'
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users, only: [:index, :edit, :update, :destroy]
 
