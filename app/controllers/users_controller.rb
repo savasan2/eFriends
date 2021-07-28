@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       selected_gender = User.where(gender: "女性").where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
     end
     selected_genre = User.where(genre: search_user.genre).where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
-    @users = selected_gender && selected_genre
+    @users = selected_gender & selected_genre
   end
 
   private
