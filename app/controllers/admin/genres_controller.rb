@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+  before_action :if_not_admin
+
   def index
      @genres = Genre.page(params[:page]).per(10).order("name")
      @genre = Genre.new
@@ -20,6 +22,10 @@ class Admin::GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:name)
+  end
+
+  def if_not_admin
+    redirect_to user_path unless current_user.admin?
   end
 
 end

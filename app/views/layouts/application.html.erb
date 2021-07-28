@@ -50,7 +50,7 @@
           <nav class="nav nav-masthead justify-content-center float-md-end">
             <% if user_signed_in? %>
               <% if current_user.admin %>
-                <%= link_to "ユーザー一覧", admin_users_path, class: "nav-link"%>
+                <%= link_to "ユーザー管理", admin_users_path, class: "nav-link"%>
                 <%= link_to "ジャンル管理", admin_genres_path, class: "nav-link" %>
               <% else %>
                 <%= link_to "探す", users_path, class: "nav-link" %>
