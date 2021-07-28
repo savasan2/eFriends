@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :image
   belongs_to :genre, optional: true
-  enum gender: { 男性:0, 女性:1 }
+  enum gender: { 未選択:0, 男性:1, 女性:2}
   has_many :user_rooms
   has_many :chats
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得

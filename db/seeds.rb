@@ -10,3 +10,5 @@ User.create!(name:  "管理者",
              password:  "testtest",
              password_confirmation: "testtest",
              admin: true)
+
+Genre.create!(name: "未設定")

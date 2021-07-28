@@ -1,14 +1,6 @@
 <div>
 <%= form_for(@contact, url: confirm_path) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'お名前*' %>
-    <%= f.text_field :name, autofocus: true, class: 'form-control col-md-4 offset-md-4' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email, 'メールアドレス*' %>
-    <%= f.text_field :email, class: 'form-control col-md-4 offset-md-4' %>
-  </div>
+<%= render 'layouts/error_messages', model: f.object %>
 
   <div class="form-group">
     <%= f.label :title, '件名*' %>
@@ -16,7 +8,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :message, 'メッセージ*' %>
+    <%= f.label :message, '内容*' %>
     <%= f.text_area :message, size: '10x10', class: 'form-control col-md-6 offset-md-3' %>
   </div>
 

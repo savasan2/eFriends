@@ -17,6 +17,8 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+    @contact.name = current_user.name
+    @contact.email = current_user.email
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
       redirect_to new_contact_path
@@ -25,13 +27,10 @@ class ContactsController < ApplicationController
     end
   end
 
-  def done
-  end
-
   private
 
   def contact_params
     params.require(:contact)
-          .permit(:email,:name,:title,:message )
+          .permit(:title,:message )
   end
 end

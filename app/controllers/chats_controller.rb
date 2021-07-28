@@ -18,6 +18,10 @@ class ChatsController < ApplicationController
   def create
     chat = current_user.chats.new(chat_params)
     chat.save
+    old_notification = Notification.where(visitor_id: current_user.id, visited_id: params[:id], action: "chat")
+    if old_notification.any?
+      old_notification.destroy_all #同じ組み合わせの古い通知レコードは削除
+    end
     notification = current_user.active_notifications.new(chat_id: chat.id, visited_id: params[:id], action: "chat")
     if notification.visitor_id == notification.visited_id
       notification.checked = true
@@ -28,6 +32,7 @@ class ChatsController < ApplicationController
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
     @room = user_rooms.room
     @chats = @room.chats.order(id: "DESC")
+    @chat = Chat.new(room_id: @room.id)
   end
 
   private

@@ -1,7 +1,6 @@
-<div>
-    <% if @users.any? %>
+    <% if users.any? %>
       <div class="row">
-        <% @users.each do |user| %>
+        <% users.each do |user| %>
             <div class="col-3">
               <div><%= attachment_image_tag user, :image,  format: 'image', size: "200x200", fallback: "no_image.png", class: "img" %>
                 <table align="center">
@@ -17,13 +16,10 @@
                     </tr>
                   </tbody>
                 </table>
-                <%= link_to "メッセージ", chat_path(user.id), class: "btn btn-lg btn-secondary fw-bold border-white bg-white" %>
               </div>
             </div>
         <% end %>
       </div>
     <% else %>
-      フレンドはいません
+      条件に合ったユーザーが見つかりません。
     <% end %>
-<%= paginate @users %>
-</div>

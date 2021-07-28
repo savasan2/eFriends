@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(current_user.id)
     if user.update(user_params)
-      redirect_to  users_path
+      redirect_to  user_path
     else
       redirect_back(fallback_location: root_path)
     end
@@ -34,10 +34,31 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @users = User.all.where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+  end
+
+  def result
+    search_user = User.new(search_params)
+    if search_user.gender == "未選択"
+      selected_gender = User.all.where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    elsif search_user.gender == "男性"
+      selected_gender = User.where(gender: "男性").where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    else
+      selected_gender = User.where(gender: "女性").where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    end
+    selected_genre = User.where(genre: search_user.genre).where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    @users = selected_gender && selected_gender
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:genre_id,:name,:image,:gender,:introduction)
+  end
+
+  def search_params
+    params.permit(:genre_id,:gender)
   end
 
 end

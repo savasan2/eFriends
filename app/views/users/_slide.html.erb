@@ -2,33 +2,15 @@
 条件にマッチするユーザーが見つかりません</br>
 他のゲームのユーザーを探す場合はゲームタグを変更してください。
 <% else %>
-<%= attachment_image_tag user, :image,  format: 'image', size: "400x400", fallback: "no_image.png", class: "img" %>
-<table align="center">
-  <tbody>
-    <tr>
-      <td style="width: 50%">ニックネーム</td>
-      <td><%= user.name %></td>
-    </tr>
-    <tr>
-      <td>性別</td>
-      <td><%= user.gender %></td>
-    </tr>
-    <tr>
-      <td>プレイしているゲーム</td>
-      <td><%= user.genre.name %></td>
-    </tr>
-    <tr>
-      <td>自己紹介</td>
-      <td><%= user.introduction %></td>
-    </tr>
-  </tbody>
-</table>
 <div>
-  <%= link_to follow_path(user.id), method: :POST, class: "btn btn-lg btn-outline-danger fw-bold  bg-transparent mt-3 mr-5", remote: true do %>
+  <%= link_to follow_path(user.id), method: :POST, class: "btn btn-lg btn-outline-danger fw-bold  bg-transparent mb-3 mr-5", remote: true do %>
     <i class="fas fa-heart" style="color: red"></i>
   <% end %>
-    <%= link_to skip_path(user.id), class: "btn btn-lg btn-outline-light fw-bold border-white bg-transparent mt-3", remote: true do %>
+    <%= link_to skip_path(user.id), class: "btn btn-lg btn-outline-light fw-bold border-white bg-transparent mb-3 ml-5", remote: true do %>
     <i class="fas fa-forward"></i>
   <% end %>
 </div>
+<%= attachment_image_tag user, :image,  format: 'image', size: "400x400", fallback: "no_image.png", class: "img" %>
+<h1><%= user.name %></h1>
+<div><%= simple_format(h(user.introduction)) %></div>
 <% end %>

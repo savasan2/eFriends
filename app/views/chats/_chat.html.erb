@@ -1,7 +1,22 @@
-  <% chats.each do |chat| %>
-  <tr>
-    <td><%= chat.user.name %></td>
-    <td><%= chat.message %></td>
-    <td><%= time_ago_in_words(chat.created_at).upcase %>前</td>
-  </tr>
-  <% end %>
+<%= form_with model: chat, url: chat_create_path, remote: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "送信する" %>
+<% end %>
+<table align="center">
+    <thead>
+        <tr>
+            <td>投稿者名</td>
+            <td>投稿内容</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% chats.each do |chat| %>
+          <tr>
+            <td><%= chat.user.name %></td>
+            <td><%= chat.message %></td>
+            <td><%= time_ago_in_words(chat.created_at).upcase %>前</td>
+          </tr>
+      <% end %>
+    </tbody>
+</table>

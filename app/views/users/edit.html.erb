@@ -22,7 +22,7 @@
     </div>
 
     <div class="field">
-      <%= f.label "現在プレイ中のゲーム" %><br />
+      <%= f.label "プレイ中のゲーム" %><br />
       <%= f.collection_select(:genre_id, Genre.all.order("name"), :id, :name, {prompt: "選択してください"}) %>
     </div>
 
@@ -31,7 +31,7 @@
       <%= f.text_area :introduction %>
     </div>
 
-    <div><%= f.submit "登録", class: "btn btn-lg btn-secondary fw-bold border-white bg-white mt-3 mb-5" %></div>
+    <div><%= f.submit "更新する", class: "btn btn-lg btn-secondary fw-bold border-white bg-white mt-3 mb-5" %></div>
 
   <% end %>
   <%= link_to '退会する', user_path(current_user.id), method: :DELETE, data: { confirm: "ユーザー情報は削除されます。本当に退会しますか？" }, class: "btn btn-lg btn-secondary fw-bold border-white bg-white mt-5" %>
