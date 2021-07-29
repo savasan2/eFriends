@@ -1,21 +1,26 @@
-<h2>探したいユーザーの情報を入力してください。</h2>
+<h2>探したいユーザーの情報を選択してください。</h2>
 <%= form_with url: result_path, remote: true do |f| %>
-<div class="field">
-  <%= f.label "探すゲーム" %><br />
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name ) %>
-</div>
+  <table align="center">
+    <thead>
+      <tr>
+        <td><%= f.label "ゲーム" %></td>
+        <td><%= f.collection_select(:genre_id, Genre.all, :id, :name ) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "性別" %></td>
+        <td>
+          <%= f.radio_button :gender, :未選択 %>
+          <%= f.label :gender, "未選択", class: "display: inline-block" %>
+          <%= f.radio_button :gender, :男性 %>
+          <%= f.label :gender, "男性", class: "display: inline-block" %>
+          <%= f.radio_button :gender, :女性 %>
+          <%= f.label :gender, "女性", class: "display: inline-block" %>
+        </td>
+      </tr>
+    </thead>
+  </table>
 
-<div class="field">
-  <%= f.label "性別" %><br />
-  <%= f.radio_button :gender, :未選択 %>
-  <%= f.label :gender, "未選択", class: "display: inline-block" %>
-  <%= f.radio_button :gender, :男性 %>
-  <%= f.label :gender, "男性", class: "display: inline-block" %>
-  <%= f.radio_button :gender, :女性 %>
-  <%= f.label :gender, "女性", class: "display: inline-block" %>
-</div>
-
-<div><%= f.submit "検索", class: "btn btn-lg btn-secondary fw-bold border-white bg-white" %></div>
+  <div><%= f.submit "検索", class: "btn btn-lg btn-secondary fw-bold border-white bg-white" %></div>
 
 <% end %>
 <div class="users">

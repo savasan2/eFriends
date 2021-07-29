@@ -2,20 +2,22 @@
       <div class="row">
         <% users.each do |user| %>
             <div class="col-3">
-              <div><%= attachment_image_tag user, :image,  format: 'image', size: "200x200", fallback: "no_image.png", class: "img" %>
-                <table align="center">
-                  <tbody>
-                    <tr>
-                      <td><%= user.name %></td>
-                    </tr>
-                    <tr>
-                      <td><%= user.gender %></td>
-                    </tr>
-                    <tr>
-                      <td><%= user.genre.name %></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <%= attachment_image_tag user, :image,  format: 'image', size: "200x200", fallback: "no_image.png", class: "img" %>
+              <table align="center">
+                <tbody>
+                  <tr>
+                    <td><%= user.name %></td>
+                  </tr>
+                  <tr>
+                    <td><%= user.gender %></td>
+                  </tr>
+                  <tr>
+                    <td><%= user.genre.name %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div id="follow-<%= user.id %>">
+                <%= render "follow", user: user %>
               </div>
             </div>
         <% end %>
