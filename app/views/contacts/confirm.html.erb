@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td class="text-right">内容:</td>
-      <td><%= @contact.message %></td>
+      <td><%= simple_format(h(@contact.message)) %></td>
     </tr>
   </tbody>
 </table>

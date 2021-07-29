@@ -18,4 +18,16 @@ class RelationshipsController < ApplicationController
     current_user.save
     @user = users[current_user.now]
   end
+
+  def follow_search
+    @user = User.find(params[:id])
+    current_user.follow(@user.id)
+    if @user.following?(current_user)
+      notification = current_user.active_notifications.new(visited_id: @user.id, action: 'follow')
+      notification.save if notification.valid?
+      notification = @user.active_notifications.new(visited_id: current_user.id, action: 'follow')
+      notification.save if notification.valid?
+    end
+  end
+
 end

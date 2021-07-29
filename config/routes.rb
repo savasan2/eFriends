@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'follow/search/:id' => 'relationships#follow_search', as: 'follow_search'
   get 'skip/:id' => 'relationships#skip', as: 'skip'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
