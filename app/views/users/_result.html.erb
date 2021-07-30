@@ -1,7 +1,7 @@
     <% if users.any? %>
       <div class="row">
         <% users.each do |user| %>
-            <div class="col-3">
+            <div class="col-xl-2 col-lg-4">
               <%= attachment_image_tag user, :image,  format: 'image', size: "200x200", fallback: "no_image.png", class: "img" %>
               <table align="center">
                 <tbody>
@@ -25,3 +25,4 @@
     <% else %>
       条件に合ったユーザーが見つかりません。
     <% end %>
+    <%= paginate @users %>
