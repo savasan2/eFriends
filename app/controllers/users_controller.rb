@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     users = User.where(genre_id: current_user.genre_id).where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
-    current_user.now = 0
+    current_user.now = 0 #current_userが現在見ているページをリセット
     current_user.save
     @user = users[current_user.now]
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def matched
     @users = current_user.following_user & current_user.follower_user
-    @users = Kaminari.paginate_array(@users).page(params[:page]).per(8)
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(12)
   end
 
   def destroy
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.all.where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
   end
 
   def result
