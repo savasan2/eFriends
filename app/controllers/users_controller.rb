@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     end
     selected_genre = User.where(genre: search_user.genre).where.not(id: current_user.id).where.not(admin: true).where.not(id: current_user.following_user).order("updated_at DESC")
     @users = selected_gender & selected_genre
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(6)
   end
 
   private
