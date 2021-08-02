@@ -13,7 +13,7 @@
     <tbody>
         <% chats.each do |chat| %>
           <tr>
-            <td><%= chat.user.name %></td>
+            <td><%= attachment_image_tag chat.user, :image,  format: 'image', size: "40x40", fallback: "no_image.png", class: "img" %><%= chat.user.name %></td>
             <td><%= simple_format(h(chat.message)) %></td>
             <td><%= time_ago_in_words(chat.created_at).upcase %>前</td>
           </tr>
