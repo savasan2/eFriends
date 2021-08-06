@@ -12,7 +12,11 @@
                     <td><%= user.gender %></td>
                   </tr>
                   <tr>
-                    <td><%= user.genre.name %></td>
+                    <% if user.genre.nil? %>
+                      <td>未設定</td>
+                    <% else %>
+                      <td><%= user.genre.name %></td>
+                    <% end %>
                   </tr>
                 </tbody>
               </table>

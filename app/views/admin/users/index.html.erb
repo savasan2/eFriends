@@ -14,7 +14,11 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.gender %></td>
-      <td><%= user.genre.name %></td>
+      <% if user.genre.nil? %>
+        <td>未設定</td>
+      <% else %>
+        <td><%= user.genre.name %></td>
+      <% end %>
       <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
       <td><%= link_to "削除", admin_user_path(user.id), method: :delete, data: { confirm: "ユーザー情報は削除されます。本当に削除しますか？" }, class: "btn btn-secondary fw-bold border-white bg-white" %></td>
     </tr>
