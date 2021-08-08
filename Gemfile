@@ -72,3 +72,12 @@ gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end
+group :development do
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
+end
+group :development do
+  gem 'overcommit'
+end
