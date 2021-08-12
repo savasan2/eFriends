@@ -78,6 +78,3 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
 end
-group :development do
-  gem 'overcommit'
-end
