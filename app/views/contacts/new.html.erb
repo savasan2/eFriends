@@ -3,12 +3,12 @@
 <%= render 'layouts/error_messages', model: f.object %>
 
   <div class="form-group">
-    <%= f.label :title, '件名*' %>
+    <%= f.label :title, '件名(必須)' %>
     <%= f.text_field :title, class: 'form-control col-md-4 offset-md-4' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :message, '内容*' %>
+    <%= f.label :message, '内容(必須)' %>
     <%= f.text_area :message, size: '10x10', class: 'form-control col-md-6 offset-md-3' %>
   </div>
 
