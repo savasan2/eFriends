@@ -5,7 +5,7 @@ ja:
       user:
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
+        password_confirmation: "パスワード(確認)"
       contact:
         title: "件名"
         message: "内容"
